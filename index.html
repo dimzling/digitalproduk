@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Dimas Putra Pratama</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+.payment-section {
+  margin: 40px auto;
+  text-align: center;
+  color: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.payment-section h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00f7ff;
+}
+
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.payment-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00f7ff;
+  border-radius: 16px;
+  padding: 12px;
+  width: 130px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 0 12px #00f7ff88;
+}
+
+.payment-box:hover {
+  transform: scale(1.05);
+  background: rgba(0, 255, 255, 0.1);
+}
+
+.payment-box img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  object-fit: contain;
+  background-color: white;
+  padding: 5px;
+}
+
+.payment-box p {
+  font-size: 14px;
+  color: #fff;
+  word-break: break-word;
+}
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #000; color: white; overflow-x: hidden; }
+    .payment-section {
+  margin: 40px auto;
+  text-align: center;
+  color: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.payment-section h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00f7ff;
+}
+
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.payment-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00f7ff;
+  border-radius: 16px;
+  padding: 12px;
+  width: 130px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 0 12px #00f7ff88;
+}
+
+.payment-box:hover {
+  transform: scale(1.05);
+  background: rgba(0, 255, 255, 0.1);
+}
+
+.payment-box img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  object-fit: contain;
+  background-color: white;
+  padding: 5px;
+}
+
+.payment-box p {
+  font-size: 14px;
+  color: #fff;
+  word-break: break-word;
+}
+
+    .login-container {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #000; display: flex; justify-content: center; align-items: center; z-index: 99999;
+    }
+    .login-box {
+      background: #111; padding: 2rem; border-radius: 15px;
+      box-shadow: 0 0 20px cyan; text-align: center; width: 300px;
+    }
+    .login-box h2 { margin-bottom: 1.5rem; color: #00ffff; }
+    .login-box input {
+      width: 100%; padding: 10px; margin: 10px 0;
+      border: none; border-radius: 8px; outline: none;
+    }
+    .login-box button {
+      background: #00ffcc; color: black; padding: 10px;
+      border: none; width: 100%; font-weight: bold;
+      border-radius: 8px; cursor: pointer; margin-top: 10px;
+    }
+    .error-message { color: red; font-size: 14px; }
+
+    #main-content { display: none; }
+
+    video.bg-video {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh; object-fit: cover;
+      z-index: -2; filter: brightness(0.3);
+    }
+    #loading-screen {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh; background: #000;
+      display: flex; justify-content: center; align-items: center;
+      z-index: 9999; transition: opacity 0.5s ease;
+    }
+    #loading-screen h1 {
+      color: #00ffcc; font-size: 2.5rem;
+      text-shadow: 0 0 20px #00ffff; animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); }
+    }
+
+    .content { padding: 2rem; }
+    .paket-container {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
+    }
+    .paket {
+      background: #111; padding: 1rem;
+      border: 2px solid #00ffff44;
+      border-radius: 12px; text-align: center; transition: 0.3s;
+    }
+    .paket:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffff88;
+    }
+    .paket h3 { color: #00ffcc; margin-bottom: 0.5rem; }
+    .paket a {
+      display: inline-block; margin-top: 1rem; background: #00ffcc;
+      color: #000; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none;
+    }
+
+    .sidebar {
+      position: fixed; top: 0; right: 0; width: 260px; height: 100vh;
+      background: #111; padding: 1rem; transform: translateX(100%);
+      transition: 0.3s ease-in-out; z-index: 999;
+      box-shadow: -2px 0 10px #00ffff88;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .sidebar.active { transform: translateX(0); }
+    .sidebar h2 { margin-bottom: 1rem; color: #00ffff; text-align: center; }
+    .sidebar ul { list-style: none; padding-left: 0; }
+    .sidebar ul li { margin: 1rem 0; }
+    .sidebar ul li a { color: #00ffcc; text-decoration: none; }
+
+    .sosmed {
+      margin-top: 2rem; text-align: center;
+    }
+    .sosmed a {
+      display: inline-block; margin: 0.4rem;
+      color: #00ffcc; text-decoration: none; font-size: 1rem;
+    }
+    .toggle-sidebar {
+      position: fixed; top: 20px; right: 20px; z-index: 1000;
+      background: #00ffcc; color: #000;
+      padding: 10px 15px; border-radius: 10px;
+      cursor: pointer; font-weight: bold;
+    }
+    footer {
+      text-align: center; padding: 1rem;
+      background: rgba(0,0,0,0.5); margin-top: 3rem;
+    }
+    .audio-player { display: none; }
+
+    .foto-kotak {
+      width: 90px; height: 90px;
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: goyang 2s infinite ease-in-out;
+    }
+    .foto-kotak img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    @keyframes goyang {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(1.5deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-1.5deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+  <style>
+  #typingText {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #00f;
+    animation: blinkCursor 0.7s steps(1) infinite;
+  }
+
+  @keyframes blinkCursor {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #00f; }
+    
+  @keyframes mengambang {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.floating {
+  animation: mengambang 2s ease-in-out infinite;
+}
+</style>
+</head>
+<body>
+<div class="login-container" id="loginScreen">
+  <div class="login-box">
+    <h2>Hallo kak safaa 
+    jangan lupa di terima ya 
+    nih bunga buat kamu💐</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="validateLogin()">Masuk</button>
+    <p class="error-message" id="loginError"></p>
+  </div>
+</div>
+
+<div id="main-content">
+  <div id="loading-screen"><h1>overday</h1></div>
+
+  <video autoplay loop muted class="bg-video">
+    <source src="https://files.catbox.moe/b2tvqn.mp4" type="video/mp4">
+  </video>
+
+  <div style="text-align:center; padding: 20px;">
+    <img src="https://files.catbox.moe/8s29tc.jpg" alt="Foto Profil"
+      class="floating"
+      style="width:100px;height:100px;border-radius:50%;border:3px solid #00ffff;box-shadow:0 0 10px #00ffff;">
+    <h3 style="color:white; margin: 10px 0 5px;">Dimz Developer</h3>
+    <p style="color:cyan; font-size:14px;">Ahli HTML, CSS, JavaScript</p>
+    <div id="typing-text"class="floating"style="font-family:'Comic Sans MS', cursive; font-size:16px; font-weight:bold; height:50px; margin-top:10px;"></div>
+  </div>
+
+  <div class="toggle-sidebar" onclick="toggleSidebar()">☰ Menu</div>
+  <div class="sidebar" id="sidebar">
+    <div>
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="#paket">Paket Hosting</a></li>
+        <li><a href="https://wa.me/6288221470868">WhatsApp Admin</a></li>
+        <li><a href="https://t.me/dimxztestimoni">Testimoni</a></li>
+        <li><a href="#">Login Pengguna</a></li>
+        <li><a href="#profil">Profil Developer</a></li>
+        <li><a href="#foto-dimz">📸 Foto Dimz Developer</a></li>
+        <li><a href="#allPayment" class="sidebar-link">💰 All Payment</a></li>
+        <li><a href="#favorit">❤️ My Favorit</a></li>
+        <li><a href="#myfotofavorit">🎲 My Foto Favorit</a></li>
+    </div>
+    <div class="sosmed">
+      <h3 style="color:#00ffff;">Social Media</h3>
+      <a href="https://wa.me/6288221470868">WhatsApp</a><br>
+      <a href="https://instagram.com/dimxz_pratama">Instagram</a><br>
+      <a href="https://tiktok.com/@dimz_overdayy">TikTok</a><br>
+      <div style="margin-top: 15px;">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3egVeEp1pF5PvoEuyfWN5G?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" id="paket">
+    <h2 style="text-align:center; color:#00ffff; margin-bottom:1rem;">Pilih Paket Hosting</h2>
+    <div class="paket-container">
+      <div class="paket"><h3>Paket Mini</h3><p>1GB RAM – Rp3.000/bln</p><a href="https://wa.me/6288221444002?text=Order%20Paket%20Mini">Order Sekarang</a></div>
+      <div class="paket floating"><h3>Paket Basic</h3><p>2GB RAM – Rp5.000/bln</p><a href="https://wa.me/6288221444002?text=Order%20Paket%20Basic">Order Sekarang</a></div>
+      <div class="paket"><h3>Paket Pro</h3><p>4GB RAM – Rp7.000/bln</p><a href="https://wa.me/6288221444002?text=Order%20Paket%20Pro">Order Sekarang</a></div>
+      <div class="paket"><h3>Paket Max</h3><p>6GB RAM – Rp9.000/bln</p><a href="https://wa.me/6288221444002?text=Order%20Paket%20Max">Order Sekarang</a></div>
+      <div class="paket"><h3>Paket Ultra</h3><p>8GB RAM – Rp12.000/bln</p><a href="https://wa.me/6288221444002?text=Order%20Paket%20Ultra">Order Sekarang</a></div>
+      <div class="paket"><h3>Paket Sultan</h3><p>Unlimited – Rp15.000/bln</p><a href="https://wa.me/6288221444002?text=Order%20Paket%20Sultan">Order Sekarang</a></div>
+    </div>
+  </div>
+
+  <div id="profil" style="padding: 20px; text-align: left; font-family: 'Comic Sans MS', cursive; color: white;">
+    <h2 style="font-size: 22px; font-weight: bold; background: linear-gradient(to right, orange, red, lime, cyan, blue); -webkit-background-clip: text; color: transparent;">
+      ✨ Profil Lengkap 💻 Dimz Developer 🌈
+    </h2>
+    <div id="profil-teks" style="margin-top: 10px; font-size: 15px; line-height: 1.6em;"></div>
+  </div>
+
+
+  <div class="audio-player">
+    <audio autoplay loop>
+      <source src="https://files.catbox.moe/z8zq3h.mp3" type="audio/mp3">
+    </audio>
+  </div>
+</div>
+
+<section id="foto-dimz" style="text-align:center; padding: 40px;">
+  <h2 style="font-size: 24px; color: #fff; margin-bottom: 20px;">📸 Foto-Foto Dimz Developer</h2>
+  <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+    <div class="foto-kotak"><img src="https://files.catbox.moe/t13e8s.jpg" alt="Foto 1"></div>
+    <div class="foto-kotak"><img src="https://files.catbox.moe/13c9er.jpg" alt="Foto 2"></div>
+    <div class="foto-kotak"><img src="https://files.catbox.moe/lkvmqa.jpg" alt="Foto 3"></div>
+    <div class="foto-kotak"><img src="https://files.catbox.moe/97fdzk.jpg" alt="Foto 4"></div>
+  </div>
+<!-- All Payment Support -->
+<div class="payment-section"
+id="allPayment">
+  <h3>All Payment Support</h3>
+  
+<div class="payment-icons">
+  <div class="payment-box floating">
+    <img src="https://files.catbox.moe/n84e1f.jpg" alt="Dana" />
+    <p>088221444002</p>
+  </div>
+  <div class="payment-box">
+    <img src="https://files.catbox.moe/u6ndwp.jpg" alt="Toko Crypto" />
+    <p>088221444002</p>
+  </div>
+  <div class="payment-box">
+    <img src="https://files.catbox.moe/ap5ec3.jpg" alt="Binance" />
+    <p>088221444002</p>
+  </div>
+  <div class="payment-box">
+    <img src="https://files.catbox.moe/c6haq8.jpg" alt="GoPay" />
+    <p>088221444002</p>
+  </div>
+  <div class="payment-box">
+    <img src="https://files.catbox.moe/61ytzt.jpg" alt="Bank Jago" />
+    <p>101914304763</p>
+  </div>
+</div>
+    <section id="favorit" style="padding: 40px; text-align: center; color: white;">
+  <h2 style="font-size: 24px; color: #fff; margin-bottom: 20px;">❤️ My Favorit Buat Safaaa</h2>
+  <div id="favorit-teks" style="font-family:'Comic Sans MS', cursive; font-size:18px; font-weight:bold; min-height: 50px;"></div>
+</section>
+
+<!-- My Foto Favorit -->
+<section id="myfotofavorit" style="text-align:center; padding: 40px;">
+  <h2 style="font-size: 24px; color: #fff; margin-bottom: 20px;">🎲 My Foto Favorit</h2>
+  <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+    <div class="foto-dadu"><img src="https://files.catbox.moe/icj4dz.jpg" alt="Favorit 1"></div>
+    <div class="foto-dadu"><img src="https://files.catbox.moe/9m6a8m.jpg" alt="Favorit 2"></div>
+    <div class="foto-dadu"><img src="https://files.catbox.moe/pf4cjg.jpg" alt="Favorit 3"></div>
+    <div class="foto-dadu"><img src="https://files.catbox.moe/beb2c4.jpg" alt="Favorit 4"></div>
+    <div class="foto-dadu"><img src="https://files.catbox.moe/9m6a8m.jpg" alt="Favorit 5"></div>
+    <div class="foto-dadu"><img src="https://files.catbox.moe/ch1fs9.jpg" alt="Favorit 6"></div>
+  </div>
+</section>
+<!-- ===== Confession: Dimas -> Safaa ===== -->
+<section id="confession" style="padding:40px 20px; text-align:center; color:#fff;">
+  <h2 style="font-size:24px; margin-bottom:16px;">✍️ Confession Dimas untuk Safaa</h2>
+
+  <!-- Tempat teks ketikan -->
+  <div id="typewrap" style="display:inline-block; max-width:800px; text-align:left; font:600 18px/1.8 'Fira Code', monospace;">
+    <span id="typewriter"></span><span id="caret" style="display:inline-block; width:10px;">|</span>
+  </div>
+
+  <!-- Kontrol -->
+  <div style="margin-top:16px;">
+    <button id="replayConfess" style="padding:8px 14px; border:none; border-radius:12px; background:#ff6b81; color:#fff; cursor:pointer; font-weight:700;">
+      Ulangi dari Awal
+    </button>
+  </div>
+</section>
+
+<script>
+/* ====== Typewriter Confession ====== */
+(() => {
+  const lines = [
+    "Hai Safaa...",
+    "Ada sesuatu yang dari dulu pengin Dimas sampaikan.",
+    "Setiap lihat senyummu, dunia Dimas terasa lebih ringan.",
+    "Dimas sayang sama Safaa. Serius. 🫶",
+    "Kalau kamu berkenan, boleh ya Dimas terus jaga kamu—pelan tapi pasti."
+  ];
+
+  const el = document.getElementById("typewriter");
+  const caret = document.getElementById("caret");
+  const replayBtn = document.getElementById("replayConfess");
+
+  // gaya kursor kedip
+  let caretOn = true;
+  setInterval(() => {
+    caret.style.opacity = caretOn ? "0" : "1";
+    caretOn = !caretOn;
+  }, 450);
+
+  // opsi kecepatan
+  const minSpeed = 65;  // ms per karakter (lebih kecil = lebih cepat)
+  const maxSpeed = 65;
+  const linePause = 650; // jeda antar baris
+
+  let lineIdx = 0, charIdx = 0, typing = false, stopped = false;
+
+  function randSpeed() {
+    return Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed;
+  }
+
+  function reset() {
+    stopped = true;
+    typing = false;
+    lineIdx = 0;
+    charIdx = 0;
+    el.innerHTML = "";
+    setTimeout(() => { stopped = false; typeLoop(); }, 100);
+  }
+
+  async function typeLoop() {
+    if (stopped || typing) return;
+    typing = true;
+
+    while (!stopped && lineIdx < lines.length) {
+      const line = lines[lineIdx];
+      // buat span baris baru
+      const lineSpan = document.createElement("span");
+      lineSpan.className = "tw-line";
+      el.appendChild(lineSpan);
+
+      // ketik karakter per karakter
+      charIdx = 0;
+      while (!stopped && charIdx < line.length) {
+        lineSpan.textContent += line[charIdx++];
+        await new Promise(r => setTimeout(r, randSpeed()));
+      }
+
+      // baris selesai -> tambah <br> kecuali baris terakhir
+      if (lineIdx < lines.length - 1) el.appendChild(document.createElement("br"));
+      await new Promise(r => setTimeout(r, linePause));
+      lineIdx++;
+    }
+
+    typing = false;
+  }
+
+  replayBtn?.addEventListener("click", reset);
+
+  // mulai otomatis
+  typeLoop();
+})();
+</script>
+<style>
+  .foto-dadu {
+    width: 80px; height: 80px;
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    animation: goyang 2s infinite ease-in-out;
+  }
+  .foto-dadu img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+</style>
+<script>
+  const favoritTeks = [
+  "Kamu adalah alasan kenapa aku semangat setiap hari...",
+  "Safaaa, kamu selalu hadir di pikiranku seperti skrip di dalam memori...",
+  "Seperti CSS ke HTML, kamu melengkapi hidupku...",
+  "Terima kasih sudah hadir dalam cerita coding-ku...",
+  "Untuk Safaaa... kamu favorit aku selamanya 😘",
+  "Untuk Safaa, bidadari yang hadir di dunia nyata…",
+  "Namamu singkat, tapi dampaknya begitu dalam Safaa, kamu adalah alasan kenapa aku lebih sering tersenyum tanpa sebab karena dalam setiap detak jantungku, ada namamu yang berbisik lembut",
+  "Dengan rasa yang tak bisa dijelaskan, tapi selalu bisa dirasakan,Dari seseorang yang benar-benar sayang kamu."
+];
+
+let favIndex = 0, favChar = 0;
+const favContainer = document.getElementById("favorit-teks");
+
+function ketikFavorit() {
+  if (favIndex < favoritTeks.length) {
+    if (favChar < favoritTeks[favIndex].length) {
+      const span = document.createElement("span");
+      span.textContent = favoritTeks[favIndex].charAt(favChar);
+      span.style.color = warna[Math.floor(Math.random() * warna.length)];
+      favContainer.appendChild(span);
+      favChar++;
+      setTimeout(ketikFavorit, 60);
+    } else {
+      favContainer.innerHTML += "<br/><br/>";
+      favChar = 0;
+      favIndex++;
+      setTimeout(ketikFavorit, 600);
+    }
+  }
+}
+  
+  const teksKetik = ["Menjual Panel Pterodactyl Premium 🔥", "Garansi & Support Full ✅", "By Dimxz Developer 💻", "Hosting terbaik untuk menjalan kan bot whatsap🚀", "Bisa Order Via WhatsApp 📲","lakukan pembayaran dgn aman no scam kalo scam no lu gua blokir", "berikan bukti transfer yg menyatakan kalo kamu sudah order jadi jangan ragu lagi untuk beli panel di kita", "jika admin tidak merespon maka admin lagi sedang offline/sibuk(kerja)","tunggu saja sampai di respon okehh Tq kalian yg sudah membaca dengan baik"];
+  
+  const warna = ["#ff0080", "#00ffff", "#ffff00", "#00ff00", "#ff0000", "#ff6600", "#66ccff", "#ff66ff"];
+  let indexTeks = 0, karakter = 0;
+  function ketikTeks() {
+    const teks = teksKetik[indexTeks];
+    const container = document.getElementById("typing-text");
+    if (karakter < teks.length) {
+      const span = document.createElement("span");
+      span.textContent = teks.charAt(karakter);
+      span.style.color = warna[Math.floor(Math.random() * warna.length)];
+      container.appendChild(span);
+      karakter++;
+      setTimeout(ketikTeks, 80);
+    } else {
+      setTimeout(() => {
+        container.innerHTML = "";
+        karakter = 0;
+        indexTeks = (indexTeks + 1) % teksKetik.length;
+        ketikTeks();
+      }, 1500);
+    }
+  }
+
+  const profilKetik = [
+    "👤 Nama: Dimz Developer",
+    "🧠 Keahlian: HTML, CSS, JavaScript",
+    "📝 Deskripsi: Saya adalah pengembang web dan penyedia jasa hosting 🌐 dengan keahlian di bidang front-end menggunakan HTML, CSS, dan JavaScript. 🚀 Saya membangun website profesional, modern, dan responsif 💡.",
+    "🎯 Tujuan: Menjual produk digital berupa layanan hosting panel Pterodactyl 🐉 dengan harga terjangkau dan performa tinggi 💸⚡.",
+    "💖 Misi: Membantu pengguna mendapatkan layanan panel yang stabil ✅, mudah diakses 📲, dan didukung penuh melalui WhatsApp & Telegram 📞💬.",
+    "🎯Visi ;Menghadirkan teknologi bot WhatsApp terpercaya untuk mendukung pertumbuhan bisnis digital dan komunikasi pelanggan secara instan, efektif, dan aman.",
+    "🌍 Target Pasar: Pengguna individu, UMKM, hingga perusahaan yang membutuhkan solusi hosting dan website profesional 🏢.",
+    "📦 Layanan Utama: Hosting panel Pterodactyl, pembuatan website custom, integrasi bot WhatsApp, dan sistem pembayaran otomatis 💻🤖.",
+    "🔒 Keunggulan: Keamanan data terjamin 🔐, server uptime 99.9% ⏳, dukungan pelanggan 24/7 🕐.",
+    "📈 Nilai Tambah: Fitur otomatisasi untuk mempercepat proses bisnis dan mempermudah manajemen layanan 🚀.",
+    "🤝 Komitmen: Selalu memberikan pelayanan terbaik, cepat tanggap, dan ramah kepada semua pelanggan 💬😊.",
+    "📚 Motto: 'Teknologi adalah jembatan menuju kesuksesan digital' 💡🌐."
+  ];
+  let teksIndex = 0, charIndex = 0;
+  const profilEl = document.getElementById("profil-teks");
+  function ketikProfil() {
+    if (teksIndex < profilKetik.length) {
+      if (charIndex < profilKetik[teksIndex].length) {
+        profilEl.innerHTML += profilKetik[teksIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(ketikProfil, 40);
+      } else {
+        profilEl.innerHTML += "<br/><br/>";
+        charIndex = 0;
+        teksIndex++;
+        setTimeout(ketikProfil, 400);
+      }
+    }
+  }
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loading = document.getElementById('loading-screen');
+      if (loading) {
+        loading.style.opacity = '0';
+        setTimeout(() => loading.style.display = 'none', 500);
+      }
+    }, 3000);
+  });
+
+  function validateLogin() {
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
+    const validUser = "safaa";
+    const validPass = "dimas";
+    if (user === validUser && pass === validPass) {
+      document.getElementById("loginScreen").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+      document.title = "Dimas Putra Pratama";
+      ketikTeks();
+      ketikProfil();
+      ketikFavorit();
+    } else {
+      document.getElementById("loginError").textContent = "Username atau Password salah!";
+    }
+  }
+</script>
+</body>
+</html>
